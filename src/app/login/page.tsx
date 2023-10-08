@@ -4,17 +4,16 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 // import { Database } from "./database.types";
 
 export default function AuthForm() {
   // const supabase = createClientComponentClient<Database>();
-  const { supabase, user } = useAuth();
+  // @ts-ignore
+  const { supabase, user, loginUser } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const { loginUser } = useAuth();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);

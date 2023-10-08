@@ -11,6 +11,8 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const supabase = createClientComponentClient();
 
+  // @ts-ignore
+
   const { signupUser, user } = useAuth();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {

@@ -2,6 +2,7 @@
 
 import {
   Session,
+  SupabaseClient,
   createClientComponentClient,
 } from "@supabase/auth-helpers-nextjs";
 import { redirect, usePathname, useRouter } from "next/navigation";
@@ -19,11 +20,20 @@ interface User {
   password: string;
 }
 
+interface AuthContextValue {
+  loginUser: ({ email, password }: User) => void;
+  signupUser: ({ email, password }: User) => void;
+  logoutUser: () => void;
+  user: Session | null;
+  loading: boolean;
+  supabase: SupabaseClient | null;
+}
+
 type AuthContextProviderProps = {
   children: ReactNode;
 };
 
-const AuthContext = createContext({});
+const AuthContext = createContext<AuthContextValue | {}>({});
 
 const supabase = createClientComponentClient();
 
@@ -87,9 +97,19 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     getAuthenticatedUser();
   }, []);
 
+  const contextValue: AuthContextValue = {
+    loginUser,
+    signupUser,
+    logoutUser,
+    user,
+    loading,
+    supabase,
+  };
+
   return (
     <AuthContext.Provider
-      value={{ loginUser, signupUser, logoutUser, user, loading, supabase }}
+      // value={{ loginUser, signupUser, logoutUser, user, loading, supabase }}
+      value={contextValue}
     >
       {children}
     </AuthContext.Provider>

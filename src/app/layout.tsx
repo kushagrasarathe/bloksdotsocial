@@ -5,6 +5,10 @@ import "./globals.css";
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 export default function RootLayout({
   children,
 }: {
@@ -15,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthContextProvider>
-        <body>{children}</body>
+        <QueryClientProvider client={queryClient}>
+          <body>{children}</body>
+        </QueryClientProvider>
       </AuthContextProvider>
     </html>
   );
