@@ -13,7 +13,7 @@ export default function Signup() {
 
   // @ts-ignore
 
-  const { signupUser, user } = useAuth();
+  const { signupUser, user, sessionKey } = useAuth();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -23,10 +23,9 @@ export default function Signup() {
     setPassword(event.target.value);
   };
 
-  if (user) {
-    return <div>You are already signed in</div>;
-  }
-
+  // if (user && sessionKey) {
+  //   return <div>You are already signed in</div>;
+  // }
   return (
     <div className=" min-h-screen flex flex-col items-center justify-center">
       <h1 className=" text-2xl font-semibold tracking-wide mb-6">SignUp</h1>

@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import Movie from "@/components/ui/Movie";
+import Link from "next/link";
 
 async function getMoviesData() {
   const response = await axios.get(
@@ -28,24 +29,30 @@ function Dashboard() {
     queryKey: ["movies"],
     queryFn: getMoviesData,
   });
-  if (isLoading)
+
+  if (isLoading) {
     return (
       <div className=" min-h-screen flex items-center justify-center">
         Loading...
       </div>
     );
-  if (error)
+  }
+
+  if (error) {
     return (
       <div className=" min-h-screen flex items-center justify-center">
         An error has occurred:{" "}
         <span className=" text-red-500">{error?.message}</span>
       </div>
     );
+  }
 
   return (
-    <div className=" min-h-screen flex flex-col items-center justify-start bg-[#0b0911]">
+    <div className=" min-h-screen flex flex-col items-center justify-start bg-[#04070b]">
       <div className=" fixed bg-black z-40 bg-opacity-30 backdrop-blur-md flex items-center justify-between w-full px-6 py-4">
-        <h1 className=" text-center text-2xl font-semibold tracking-wide">Movies</h1>
+        <Link href={'/'} className=" cursor-pointer text-center text-2xl font-semibold tracking-wide">
+          Movies
+        </Link>
         <button
           className=" bg-red-500 transition-all ease-in-out active:scale-[0.98] p-2 rounded-md px-3 font-semibold"
           onClick={logoutUser}

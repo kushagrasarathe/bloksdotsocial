@@ -10,7 +10,7 @@ import { ChangeEvent, useState } from "react";
 export default function AuthForm() {
   // const supabase = createClientComponentClient<Database>();
   // @ts-ignore
-  const { supabase, user, loginUser } = useAuth();
+  const { supabase, user, loginUser, sessionKey } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,9 +23,9 @@ export default function AuthForm() {
     setPassword(event.target.value);
   };
 
-  if (user) {
-    return <div>You are already signed in</div>;
-  }
+  // if (user && sessionKey) {
+  //   return <div>You are already signed in</div>;
+  // }
 
   return (
     <div className=" min-h-screen flex flex-col items-center justify-center">
