@@ -1,20 +1,17 @@
 "use client";
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+
 import { useAuth } from "@/context/AuthContext";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Auth } from "@supabase/auth-ui-react";
 import Link from "next/link";
-import { useState } from "react";
-// import { Database } from "./database.types";
+import { ChangeEvent, useState } from "react";
 
-export default function AuthForm() {
-  // const supabase = createClientComponentClient<Database>();
-  const { supabase, user } = useAuth();
-
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const supabase = createClientComponentClient();
 
-  const { loginUser } = useAuth();
+  const { signupUser, user } = useAuth();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -30,7 +27,7 @@ export default function AuthForm() {
 
   return (
     <div className=" min-h-screen flex flex-col items-center justify-center">
-      <h1 className=" text-2xl font-semibold tracking-wide mb-6">Login</h1>
+      <h1 className=" text-2xl font-semibold tracking-wide mb-6">SignUp</h1>
       <div className=" flex  flex-col gap-y-4 md:w-5/12 border border-gray-700 p-10 rounded-xl">
         <label htmlFor="" className=" -mb-2 text-gray-300">
           Email
@@ -56,16 +53,16 @@ export default function AuthForm() {
         />
 
         <button
-          onClick={() => loginUser({ email, password })}
-          className="font-semibold bg-green-400 mt-2 text-black rounded-md p-2 active:scale-[0.99] transition-all ease-in-out"
+          onClick={() => signupUser({ email, password })}
+          className=" font-semibold  bg-green-400 mt-2 text-black rounded-md p-2 active:scale-[0.99] transition-all ease-in-out"
         >
-          Login
+          Create Account
         </button>
         <div className=" border-t my-2 border-gray-700" />
         <div className=" self-center text-center mx-auto w-full">
-          Dont have account?{" "}
-          <Link className=" underline" href={"/signup"}>
-            Signup Here
+          Already have account?{" "}
+          <Link className=" underline" href={"/login"}>
+            Login Here
           </Link>
         </div>
       </div>

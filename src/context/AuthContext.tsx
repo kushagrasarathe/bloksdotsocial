@@ -4,7 +4,7 @@ import {
   Session,
   createClientComponentClient,
 } from "@supabase/auth-helpers-nextjs";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import React, {
   ReactNode,
   createContext,
@@ -36,7 +36,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const router = useRouter();
   const currentPath = usePathname();
 
-  const loginUser = async ({ email, password }: User) => {
+  const signupUser = async ({ email, password }: User) => {
     const user = await supabase.auth.signUp({
       email,
       password,
@@ -49,6 +49,27 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       setSessionKey(user.data.session);
       setUser(user.data.user);
     }
+  };
+
+  const loginUser = async ({ email, password }: User) => {
+    const user = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (user.data.session) {
+      setSessionKey(user.data.session);
+      setUser(user.data.user);
+      router.push("/dashboard");
+    }
+  };
+
+  const logoutUser = async () => {
+    const data = await supabase.auth.signOut();
+    console.log(data);
+    setSessionKey(null);
+    setUser(null);
+    router.push("/login");
   };
 
   useEffect(() => {
@@ -67,7 +88,9 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ loginUser, user, loading }}>
+    <AuthContext.Provider
+      value={{ loginUser, signupUser, logoutUser, user, loading, supabase }}
+    >
       {children}
     </AuthContext.Provider>
   );

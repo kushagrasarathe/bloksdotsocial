@@ -1,16 +1,21 @@
 "use client";
 
-import ProtectedRoute from "@/components/WhenLoggedIn";
-import withAuth from "@/components/WhenLoggedIn";
+import { useAuth } from "@/context/AuthContext";
+import { redirect } from "next/navigation";
 import React from "react";
 
 function Dashboard() {
+  const {  user, sessionKey, logoutUser } = useAuth();
+
+  // if (!user) {
+  //   redirect("/login");
+  // }
+
   return (
-    // <ProtectedRoute>
-      <div>
-        <h1>Dahboard</h1>
-      </div>
-    // {/* </ProtectedRoute> */}
+    <div>
+      <h1>Dahboard</h1>
+      <button onClick={logoutUser}>logoutUser</button>
+    </div>
   );
 }
 

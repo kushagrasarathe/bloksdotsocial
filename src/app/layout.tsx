@@ -3,7 +3,7 @@
 import { AuthContextProvider } from "@/context/AuthContext";
 import "./globals.css";
 import { usePathname } from "next/navigation";
-
+import Navbar from "@/components/ui/Navbar";
 
 export default function RootLayout({
   children,
