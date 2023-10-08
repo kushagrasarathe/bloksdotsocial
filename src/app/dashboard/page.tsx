@@ -40,9 +40,9 @@ function Dashboard() {
 
   if (error) {
     return (
-      <div className=" min-h-screen flex items-center justify-center">
-        An error has occurred:{" "}
-        <span className=" text-red-500">{error?.message}</span>
+      <div className=" min-h-screen flex items-center text-red-500 justify-center">
+        An error has occurred
+        {/* :{" "}<span className=" text-red-500">{error?.message}</span> */}
       </div>
     );
   }
@@ -50,7 +50,10 @@ function Dashboard() {
   return (
     <div className=" min-h-screen flex flex-col items-center justify-start bg-[#04070b]">
       <div className=" fixed bg-black z-40 bg-opacity-30 backdrop-blur-md flex items-center justify-between w-full px-6 py-4">
-        <Link href={'/'} className=" cursor-pointer text-center text-2xl font-semibold tracking-wide">
+        <Link
+          href={"/"}
+          className=" cursor-pointer text-center text-2xl font-semibold tracking-wide"
+        >
           Movies
         </Link>
         <button

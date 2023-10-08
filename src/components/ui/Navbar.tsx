@@ -1,8 +1,8 @@
-import { PrimaryBtn } from "@/app/page";
 import { logo } from "../../assets/index";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { PrimaryBtn } from "./Buttons";
 
 const paths = ["products", "dao", "build", "docs"];
 
