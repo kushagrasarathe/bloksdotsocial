@@ -1,9 +1,17 @@
+"use client";
+
+import ProtectedRoute from "@/components/WhenLoggedIn";
+import withAuth from "@/components/WhenLoggedIn";
 import React from "react";
 
-export default function page() {
+function Dashboard() {
   return (
-    <div>
-      <h1>Dahboard</h1>
-    </div>
+    // <ProtectedRoute>
+      <div>
+        <h1>Dahboard</h1>
+      </div>
+    // {/* </ProtectedRoute> */}
   );
 }
+
+export default Dashboard;
