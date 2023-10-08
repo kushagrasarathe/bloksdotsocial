@@ -12,40 +12,42 @@ export interface Movies {
 
 const Movie = ({ title, poster_path, overview, vote_average }: Movies) => {
   const ImagesApi = "https://image.tmdb.org/t/p/w1280";
-  const setVoteClass = (vote: number) => {
-    if (vote >= 8) {
-      return "green";
-    } else if (vote >= 6) {
-      return "orange";
-    } else {
-      return "red";
-    }
-  };
 
   return (
-    <div className=" bg-white text-black bgopacity-50 rounded-md pb-4 h-full flex flex-col items-start justify-between">
-      <Image
-        src={
-          poster_path
-            ? ImagesApi + poster_path
-            : "https://indianfolk.com/wp-content/uploads/2018/10/Movie.jpg"
-        }
-        width={1000}
-        height={1000}
-        className=" w7 w-full max-h-[600px] object-cover object-center"
-        alt={title}
-      />
-      <div className=" pt-3 mb-auto px-4">
-        <h3>{title}</h3>
-        <span className={`tag ${setVoteClass(vote_average)}`}>
-          {vote_average}
-        </span>
+    <>
+      <div className=" rounded-xl  hover:cursor-pointer relative cut-top-left-corner text-black bg-whit flex flex-col items-center justify-end self-start w-full max-h-[500px] h-[500px] group overflow-hidden">
+        <div className="squad-card-wrapper absolute bottom-0  mt-5 squad-card-bg transition-all ease-in-out duration-300 transform   ">
+          {/* group-hover:scale-y-[0.65] group-hover:-translate-y-48 */}
+          <Image
+            src={
+              poster_path
+                ? ImagesApi + poster_path
+                : "https://indianfolk.com/wp-content/uploads/2018/10/Movie.jpg"
+            }
+            width={1000}
+            height={1000}
+            className=" h-full w-full object-cover object-center    group-hover:scale-110 transition-all ease-in-out"
+            // group-hover:scale h-[500px] max-w-[400px]  -y-05 group-hover:scale-x-75 -20 pb-0
+            alt={title}
+          />
+        </div>
+
+        <div className=" absolute h-[260px] overflow-auto bottom-0 w-full px-5 py-3 details  text-white bg-black bg-opacity-80 backdrop-blur-sm   opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-300 ">
+          <h1 className="text-2xl tracking-wider font-semibold">{title}</h1>
+          <div className=" relative flex items-center justify-between">
+            <h2 className=" text-xl mt-1 tracking-wider ">{vote_average}</h2>
+            <div className=" relative flex items-center justify-normal gap-3"></div>
+          </div>
+          <p className=" text-base tracking-wide leading-normal pt-4">
+            {overview}
+          </p>
+        </div>
+
+        <div className=" w-full text-xl px-4 py-3 wf  text-white bg-black bg-opacity-80 backdrop-blur-sm  cut-top-left-corner mx-auto absolute bottom-0  description group-hover:opacity-0 text-center ">
+          {title}
+        </div>
       </div>
-      <div className=" px-4">
-        <h2>Overview:</h2>
-        <p>{overview}</p>
-      </div>
-    </div>
+    </>
   );
 };
 

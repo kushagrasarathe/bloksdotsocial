@@ -15,7 +15,7 @@ async function getMoviesData() {
       },
     }
   );
-  console.log(response.data);
+  // console.log(response.data);
   return response.data;
 }
 
@@ -28,21 +28,32 @@ function Dashboard() {
     queryKey: ["movies"],
     queryFn: getMoviesData,
   });
-  if (isLoading) return "Loading...";
-  if (error) return "An error has occurred: " + error?.message;
+  if (isLoading)
+    return (
+      <div className=" min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  if (error)
+    return (
+      <div className=" min-h-screen flex items-center justify-center">
+        An error has occurred:{" "}
+        <span className=" text-red-500">{error?.message}</span>
+      </div>
+    );
 
   return (
-    <div className=" min-h-screen flex flex-col items-center justify-start">
-      <div className=" flex items-center justify-between w-full px-6 p-3">
-        <h1 className=" text-center">Dahboard</h1>
+    <div className=" min-h-screen flex flex-col items-center justify-start bg-[#0b0911]">
+      <div className=" fixed bg-black z-40 bg-opacity-30 backdrop-blur-md flex items-center justify-between w-full px-6 py-4">
+        <h1 className=" text-center text-2xl font-semibold tracking-wide">Movies</h1>
         <button
           className=" bg-red-500 transition-all ease-in-out active:scale-[0.98] p-2 rounded-md px-3 font-semibold"
           onClick={logoutUser}
         >
-          logoutUser
+          Logout
         </button>
       </div>
-      <div className=" grid grid-cols-4 gap-8 md:w-10/12">
+      <div className=" mt-16 grid grid-cols-4 gap-8 md:w-10/12 py-12">
         {data.results.map((movie: any) => (
           <div className=" col-span-1" key={movie.id}>
             <Movie
