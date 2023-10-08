@@ -8,7 +8,7 @@ const paths = ["products", "dao", "build", "docs"];
 export default function Navbar() {
   // @ts-ignore
   return (
-    <div className=" mt- py-5 px-10 bg-black bg-opacity-70 backdrop-blur-md rounded-full border border-[#ffffff2e] w-10/12 mx-auto flex items-center justify-between text-white">
+    <div className=" mt- py-4 px-10 bg-black bg-opacity-70 backdrop-blur-md rounded-full border border-[#ffffff2e] w-10/12 mx-auto flex items-center justify-between text-white">
       <Image src={logo} alt="logo" />
       <div className=" flex gap-x-8">
         {paths.map((path, idx) => (

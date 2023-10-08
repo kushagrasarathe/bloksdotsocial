@@ -1,5 +1,5 @@
 import logo from "@assets/logo.png";
-import hexagonGradient from "@assets/hexagon-gradient.svg";
+import hexagonGradient from "@assets/hexagon-gradient.png";
 import partner1 from "@assets/partner1.svg";
 import partner2 from "@assets/partner2.svg";
 import partner3 from "@assets/partner3.svg";
