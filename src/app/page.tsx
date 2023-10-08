@@ -35,8 +35,8 @@ export default function Home() {
       <div className=" z-50 absolute top-8 w-full">
         <Navbar />
       </div>
-      <div className=" z-20 relative hexagonGradient mt-72 flex flex-col items-center justify-center w-full">
-        <Image
+      <div className=" group z-20 relative hexagonGradient mt-80 flex flex-col items-center justify-center w-full">
+      <Image
           className="  absolute w-[43vw] -top-[37vh] z-10"
           src={hexagonGradient}
           alt="hexagonGradient"
@@ -52,7 +52,7 @@ export default function Home() {
         <h1 className=" z-20 text-7xl text-center leading-[80px]">
           the next generation of <br />{" "}
         </h1>
-        <div className=" z-10 text-7xl text-center leading-[80px] mt- italic playfair w-6/12 gradient2">
+        <div className=" z-10 text-7xl text-center leading-[80px] -mt-1 italic playfair w-6/12 gradient2">
           defi governance
         </div>
         <p className=" tracking-wider max-w-2xl leading-8 font-[400] text-center text-[#ffffff99] text-xl mt-5">
@@ -64,7 +64,7 @@ export default function Home() {
           <SecondaryBtn title="how it works" />
         </div>
       </div>
-      <div className=" mt-40">
+      <div className=" mt-28">
         <Partners />
       </div>
     </main>

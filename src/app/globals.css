@@ -24,7 +24,7 @@ body {
 }
 
 .gradient2 {
-  background: radial-gradient(at 50% -30%, #40aa9e, rgb(0, 0, 0), rgb(0, 0, 0))
+  background: radial-gradient(at 50% -30%, #40aa9e, rgb(0, 0, 0), rgb(0, 0, 0));
 }
 
 .playfair {

@@ -44,7 +44,13 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [sessionKey, setSessionKey] = useState<Session | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const currentPath = usePathname();
+  const pathName = usePathname();
+
+  useEffect(() => {
+    if (user === null && pathName === "/dashboard") {
+      router.push("/login");
+    }
+  }, [pathName]);
 
   const signupUser = async ({ email, password }: User) => {
     const user = await supabase.auth.signUp({

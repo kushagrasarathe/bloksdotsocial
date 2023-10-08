@@ -2,6 +2,7 @@ import { PrimaryBtn } from "@/app/page";
 import { logo } from "../../assets/index";
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 const paths = ["products", "dao", "build", "docs"];
 
@@ -12,10 +13,14 @@ export default function Navbar() {
       <Image src={logo} alt="logo" />
       <div className=" flex gap-x-8">
         {paths.map((path, idx) => (
-          <div className=" cursor-pointer hover:underline" key={idx}>{path}</div>
+          <div className=" cursor-pointer hover:underline" key={idx}>
+            {path}
+          </div>
         ))}
       </div>
-      <PrimaryBtn title="launch app" />
+      <Link href={'/login'}>
+        <PrimaryBtn title="launch app" />
+      </Link>
     </div>
   );
 }
