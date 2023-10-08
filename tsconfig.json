@@ -18,16 +18,20 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components*": ["./src/components*"],
+      "@assets*": ["./src/assets*"]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "src/middleware.ts"
-, "src/middlewarets"  ],
+    ".next/types/**/*.ts"
+    // "src/middleware.ts",
+    // "src/middlewarets"
+  ],
   "exclude": ["node_modules"]
 }
