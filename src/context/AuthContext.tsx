@@ -14,6 +14,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import toast from "react-hot-toast";
 
 interface User {
   email: string;
@@ -42,6 +43,7 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [user, setUser] = useState<null | any>(null);
   const [sessionKey, setSessionKey] = useState<Session | null>(null);
+  const [error, setError] = useState<string | null>("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const pathName = usePathname();
@@ -61,9 +63,14 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       },
     });
 
+    console.log(user.error?.message);
+    toast.error(`${user.error?.message}`);
+
     if (user.data.session) {
       setSessionKey(user.data.session);
       setUser(user.data.user);
+      toast.success(`Account created, please verify your email`);
+      // router.push("/dashboard");
     }
   };
 
@@ -73,9 +80,12 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       password,
     });
 
+    // console.log(user.error?.message);
+    toast.error(`${user.error?.message}`);
     if (user.data.session) {
       setSessionKey(user.data.session);
       setUser(user.data.user);
+      toast.success(`Logged-in successfully`);
       router.push("/dashboard");
     }
   };

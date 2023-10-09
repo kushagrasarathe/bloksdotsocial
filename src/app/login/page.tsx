@@ -5,6 +5,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
+import { Toaster } from "react-hot-toast";
 // import { Database } from "./database.types";
 
 export default function AuthForm() {
@@ -29,6 +30,7 @@ export default function AuthForm() {
 
   return (
     <div className=" min-h-screen flex flex-col items-center justify-center">
+      <Toaster position="bottom-center" reverseOrder={false} />
       <h1 className=" text-2xl font-semibold tracking-wide mb-6">Login</h1>
       <div className=" flex  flex-col gap-y-4 md:w-5/12 border border-gray-700 p-10 rounded-xl">
         <label htmlFor="" className=" -mb-2 text-gray-300">

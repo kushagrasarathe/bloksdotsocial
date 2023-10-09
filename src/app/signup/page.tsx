@@ -5,6 +5,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Auth } from "@supabase/auth-ui-react";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -28,6 +29,7 @@ export default function Signup() {
   // }
   return (
     <div className=" min-h-screen flex flex-col items-center justify-center">
+      <Toaster position="bottom-center" reverseOrder={false} />
       <h1 className=" text-2xl font-semibold tracking-wide mb-6">SignUp</h1>
       <div className=" flex  flex-col gap-y-4 md:w-5/12 border border-gray-700 p-10 rounded-xl">
         <label htmlFor="" className=" -mb-2 text-gray-300">

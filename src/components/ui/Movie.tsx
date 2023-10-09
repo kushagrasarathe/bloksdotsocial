@@ -33,7 +33,9 @@ const Movie = ({ title, poster_path, overview, vote_average }: Movies) => {
         </div>
 
         <div className=" absolute h-[260px] overflow-auto bottom-0 w-full px-5 py-3 details  text-white bg-black bg-opacity-80 backdrop-blur-sm   opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-300 ">
-          <h1 className="text-2xl tracking-wider font-semibold">{title}</h1>
+          <h1 className=" laptop:text-xl desktop:text-2xl tracking-wider font-semibold">
+            {title}
+          </h1>
           <div className=" relative flex items-center justify-between">
             <h2 className=" text-xl mt-1 tracking-wider ">{vote_average}</h2>
             <div className=" relative flex items-center justify-normal gap-3"></div>
